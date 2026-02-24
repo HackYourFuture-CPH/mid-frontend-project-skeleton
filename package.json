@@ -9,7 +9,8 @@
     "npm": "^10.5.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"npm run dev:api\" \"vite\"",
+    "dev:api": "json-server api/db.json -p 3001",
     "build": "vite build",
     "format": "npx prettier . --write",
     "check": "npx eslint . --fix"
@@ -22,9 +23,11 @@
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^9.2.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.0.0",
+    "json-server": "^1.0.0-beta.9",
     "prettier": "^3.2.5",
     "vite": "^5.2.0"
   }
