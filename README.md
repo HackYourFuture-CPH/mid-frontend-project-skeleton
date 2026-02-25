@@ -9,11 +9,19 @@ To prepare your application for deployment you can run `npm run build`.
 
 ## Mock API
 
-The project uses [json-server](https://www.npmjs.com/package/json-server) as a thin mock API. When you run `npm run dev`, both the API and the Vite app start: the API is at `http://localhost:3001`, the app at Vite’s usual URL. Set `VITE_API_URL=http://localhost:3001` in your `.env` (see `.env.example`) so the app talks to the mock API.
+The project uses [json-server](https://www.npmjs.com/package/json-server) as a thin mock API. When you run `npm run app`, both the API and the Vite app start: the API is at `http://localhost:3001`, the app at Vite’s usual URL. Set `VITE_API_URL=http://localhost:3001` in your `.env` (see `.env.example`) so the app talks to the mock API.
 
-Mock data lives in `api/db.json`. It exposes REST endpoints for the keys in that file (e.g. `/events`, `/users`, `/orders`). **Change or generate the data in `api/db.json` for your own needs**—edit the JSON by hand or replace it with generated data. json-server will serve whatever is in that file and supports query params, pagination, and CRUD. Check [json-server](https://www.npmjs.com/package/json-server) for documentation.
+Mock data lives in `api/db.json`. It exposes REST endpoints for the keys in that file (e.g. `/events`, `/users`, etc.). **Change or generate the data in `api/db.json` for your own needs**- edit the JSON by hand or replace it with generated data. json-server will serve whatever is in that file and supports query params, pagination, and CRUD. Check [json-server](https://www.npmjs.com/package/json-server) for documentation.
 
 To run only the API: `npm run dev:api`.
+
+## Firebase (Google + Email/Password)
+
+The app uses [Firebase Authentication](https://firebase.google.com/docs/auth) with [Google Sign-In](https://firebase.google.com/docs/auth/web/google-signin) and [email/password](https://firebase.google.com/docs/auth/web/password-auth). Set the Firebase config in `.env` (see `.env.example`). In the [Firebase console](https://console.firebase.google.com/): enable **Google** and **Email/Password** under Authentication → Sign-in method. Use `useAuth()` from `src/context/AuthContext.jsx` for `user`, `signInWithGoogle`, `signUpWithEmail`, `signInWithEmail`, and `signOut`.
+
+**Where to find docs and credentials:** To create a project and get your web app config, use [Add Firebase to your JavaScript project](https://firebase.google.com/docs/web/setup). That guide covers creating a project (or using an existing one), registering a web app, and copying the `firebaseConfig` object. The same values (apiKey, authDomain, projectId, etc.) go into your `.env` as `VITE_FIREBASE_*`. You can also open the [Firebase console](https://console.firebase.google.com/) → your project → **Project settings** (gear) → **Your apps** → select or add a web app to see the config.
+
+More providers can be added: follow the [Firebase sign-in method docs](https://firebase.google.com/docs/auth/web/start#add-sign-in-providers) to enable additional providers (e.g. Facebook, GitHub, Twitter) in the Firebase console and wire them up in your app.
 
 ## Environment variables
 
@@ -57,13 +65,20 @@ When you call `api('/nested')` the helper generates the following URL `https://m
 const response = await fetch(api('/nested'));
 ```
 
-## Deploying a static web app
+## Deploying to Render
+
+**Can this setup be deployed to Render?** Yes, with one important distinction.
+
+- **Frontend (this app)** — Deploy as a **Static Site** on Render. Use build command `npm run build` and publish the `dist/` folder. The app will call whatever URL you set in `VITE_API_URL`. No mock API runs on the Static Site; it only serves the built files.
+- **Mock API (json-server)** — Render’s Static Site does **not** run Node, so the mock API does not run there. You have two options:
+  1. **Use a real API** — Deploy a proper backend (e.g. Node/Express with a database) as a **Web Service** on Render, then set `VITE_API_URL` to that service’s URL. This is the right approach for production.
+  2. **Run the mock on Render for demos** — You can run json-server as a separate **Web Service** (Node, e.g. start command `npx json-server api/db.json -p 3001`). Set `VITE_API_URL` to that service URL. Be aware: `api/db.json` is file-based, resets on redeploy unless you use a persistent disk, and is not suitable for real production data.
+
+So: deploy the **frontend** as a Static Site; point it at a **real API** (Web Service + DB) for production, or at a **json-server Web Service** only for a quick demo.
 
 > Last tested: 2024-04-11
 
-Follow the steps [here](../api/README.md#deploying) first to deploy your database and your web service.
-
-Once you've done that, click "New" and this time select "Static Site".
+Once you have an API URL (your own backend or a mock Web Service), click "New" and select "Static Site".
 
 ![](./images/render/app/step16.png)
 ![](./images/render/app/step17.png)
