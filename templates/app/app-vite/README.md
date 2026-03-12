@@ -94,7 +94,7 @@ json-server stores whatever JSON you send it — it does no validation. This mea
 
 ### Switching to the real API
 
-If you want to move from the mock API to the real Express backend (the `api/` package at the project root), follow these steps:
+While it is _not_ required as part of your project's requirements, if at a later point you want to move from the mock API to the real Express backend (the `api/` package at the project root), follow these steps:
 
 1. **Stop the mock API** (`npm run api` / `npm run dev:all`).
 2. **Set up and start the real backend** — follow the instructions in `api/README.md`.
