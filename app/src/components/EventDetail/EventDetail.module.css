@@ -1,0 +1,20 @@
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.title {
+  margin-bottom: 16px;
+}
+
+.info {
+  color: #555;
+  margin: 6px 0;
+}
+
+.description {
+  margin-top: 16px;
+  line-height: 1.6;
+}

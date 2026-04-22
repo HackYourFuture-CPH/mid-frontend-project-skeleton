@@ -1,0 +1,64 @@
+
+.card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 400px;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+  .header {
+    display: "flex";
+    justify-content: "space-between";
+    margin-bottom: "8px";
+
+  }
+
+  .category {
+    background-color: "#f0f0f0";
+    padding: "4px 8px";
+    border-radius: "6px";
+    font-size: "12px";
+  }
+
+  .soldOut {
+    color: "red";
+    font-weight: "bold";
+    font-size: "12px";
+  }
+
+  .title {
+    margin: "8px 0";
+  }
+  .info {
+    margin: "4px 0";
+    font-size: "14px";
+    color: "#555";
+  }
+
+  .description {
+    margin: "10px 0";
+    font-size: "14px";
+  }
+
+  .footer {
+    display: "flex";
+    justify-content: "space-between";
+    align-items: "center";
+    margin-top: "12px";
+  }
+
+  .price {
+    font-weight: "bold";
+    font-size: "18px";
+  }
+
+  .button {
+    border: "none";
+    padding : "8px 12px";
+    background-color: "#007bff";
+    border-radius: "6px";
+    color: "white";
+    cursor: "pointer";
+  }

@@ -2,10 +2,33 @@
 // TODO: use useParams() to get the event id from the URL
 // TODO: fetch the event from GET /events/:id instead of using mock data
 
-export default function EventDetail() {
+
+import styles from "./EventDetail.module.css";
+
+const EventDetail = () => {
+  const event = {
+    name: "React Copenhagen Conference 2026",
+    date: "2026-04-15",
+    time: "09:00",
+    venue: "Copenhagen Concert Hall",
+    city: "Copenhagen",
+    description:
+      "The largest React conference in Scandinavia. Two tracks covering the latest in React 19, Server Components, and the evolving frontend ecosystem.",
+  };
+
   return (
-    <div>
-      <p>Event detail — coming soon.</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{event.name}</h1>
+
+      <p className={styles.info}>
+        📅 {event.date} • ⏰ {event.time}
+      </p>
+
+      <p className={styles.info}>
+        📍 {event.venue}, {event.city}
+      </p>
+
+      <p className={styles.description}>{event.description}</p>
     </div>
   );
 }
