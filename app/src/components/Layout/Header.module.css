@@ -1,0 +1,32 @@
+.header {
+  background-color: #293a7d;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* group right-side links */
+.links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* optional */
+.logo {
+  height: 50px;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
