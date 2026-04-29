@@ -12,7 +12,8 @@ const EventCard = ({event}) => {
             <p>🏙️ {event.venue}, {event.city}</p>
             {/* <p>{event.description.slice(0, 100)}...</p> */}
             <div className={styles.footer}>
-                <span className={styles.price}>{event.price} DKK</span>  | 
+                {event.price === 0 ? <span className={styles.price}>Free</span> :
+                <span className={styles.price}>{event.price} DKK</span>}  | 
                 {event.ticketsAvailable > 0 ? 
                 <span>  {event.ticketsAvailable} tickets left</span> : 
                 <span>  Sold Out</span>
