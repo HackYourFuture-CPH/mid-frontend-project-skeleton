@@ -35,7 +35,7 @@ const events = [
     date: "2026-05-03",
     time: "10:00",
     venue: "Founders House",
-    city: "Copenhagen",
+    city: "Aarhus",
     description:
       "A hands-on full-day workshop covering modern JavaScript patterns: closures, async/await, Promises, modules, and functional techniques. Bring your laptop. Small group, individual coaching included.",
     price: 79,
