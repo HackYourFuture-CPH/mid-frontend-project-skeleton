@@ -6,6 +6,13 @@
   max-width: 400px;
   list-style: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.3s ease; 
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1); 
 }
 
   .header {
@@ -16,10 +23,9 @@
   }
 
   .category {
-    background-color: "#f0f0f0";
     padding: "4px 8px";
-    border-radius: "6px";
     font-size: "12px";
+    background-color: rgb(236, 208, 67);
   }
 
   .soldOut {
@@ -44,6 +50,7 @@
 
   .footer {
     display: "flex";
+    flex-direction: column;
     justify-content: "space-between";
     align-items: "center";
     margin-top: "12px";
@@ -57,8 +64,8 @@
   .button {
     border: "none";
     padding : "8px 12px";
-    background-color: "#007bff";
+    background-color: "grey";
     border-radius: "6px";
     color: "white";
     cursor: "pointer";
-  }
+  } 
