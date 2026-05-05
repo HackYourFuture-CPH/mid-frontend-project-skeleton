@@ -1,58 +1,79 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, NavLink } from "react-router-dom";
 import hyfLogo from "../../assets/hyf.svg";
 import { useAuth } from "../../context/AuthContext.jsx";
+import "./Layout.css";
 
 export default function Layout() {
   const { user, logout } = useAuth();
 
   return (
-    <div>
-      <header>
-        <nav
-          style={{
-            width: "100%",
-            display: "flex",
-            gap: "20px",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "10px 20px",
-          }}
-        >
+    <div className="site-wrapper">
+      <header className="site-header">
+        <nav className="site-nav">
           <a
             href="https://www.hackyourfuture.dk/"
             target="_blank"
-            className="link"
+            rel="noreferrer"
+            className="nav-logo"
           >
-            <img
-              src={hyfLogo}
-              alt="HackYourFuture logo"
-              className="logo"
-              width={200}
-              style={{ padding: "20px" }}
-            />
+            <img src={hyfLogo} alt="HackYourFuture logo" width={120} />
           </a>
-          {/* Navigation links go here — e.g. link to event list, cart, login */}
-          <Link to="/events" className="link">
-            Events
-          </Link>
 
-          {user && (
-            <>
-              <span>{user.email}</span>
-              <button onClick={logout}>Sign out</button>
-            </>
-          )}
+          <ul className="nav-links">
+            <li>
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/events"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                Events
+              </NavLink>
+            </li>
+          </ul>
 
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <div className="nav-auth">
+            {user ? (
+              <>
+                <span className="nav-user">{user.email}</span>
+                <button className="btn-signout" onClick={logout}>
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink to="/login" className="btn-login">
+                  Log in
+                </NavLink>
+                <NavLink to="/register" className="btn-register">
+                  Register
+                </NavLink>
+              </>
+            )}
+          </div>
         </nav>
       </header>
 
-      <main>
+      <main className="site-main">
         <Outlet />
       </main>
 
-      <footer>{/* Footer content goes here */}</footer>
+      <footer className="site-footer">
+        <p>
+          2026 HYF Events &middot; <Link to="/events">Browse events</Link>
+        </p>
+      </footer>
     </div>
   );
 }

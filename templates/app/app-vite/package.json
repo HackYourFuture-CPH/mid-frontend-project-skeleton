@@ -25,13 +25,13 @@
     "@eslint/js": "^9.0.0",
     "@vitejs/plugin-react": "^4.2.1",
     "concurrently": "^9.1.0",
-    "nodemon": "^3.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.0.0",
     "json-server": "^0.17.4",
     "json-server-auth": "^2.1.0",
-    "prettier": "^3.2.5",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.8.3",
     "vite": "^5.2.0"
   }
 }
