@@ -21,7 +21,9 @@ export function AuthProvider({ children }) {
     });
 
     if (!response.ok) {
-      throw new Error("Invalid email or password");
+      const errorData = await res.json();
+
+      throw new Error(errorData.message || "Something went wrong");
     }
 
     const { accessToken, user } = await response.json();
@@ -33,12 +35,26 @@ export function AuthProvider({ children }) {
     // TODO: if the response is not ok, throw an error
     // TODO: destructure { accessToken, user } from the response JSON
     // TODO: call `persist` with accessToken and user to save the session
+    const response = await fetch(api("/register"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Invalid email or password");
+    }
+
+    const { accessToken, user } = await response.json();
+    persist(accessToken, user);
   }
 
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     // TODO add the missing logout logic here — clear the token and user from state as well
+    setToken(null);
+    setUser(null);
   }
 
   function persist(accessToken, user) {
