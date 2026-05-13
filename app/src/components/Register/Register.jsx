@@ -6,11 +6,13 @@
 import styles from "../Login/Login.module.css";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Register() {
 
   const { register } = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -44,6 +46,8 @@ export default function Register() {
     try {
       await register(email, password);
       setSuccess("Account created successfully!");
+      navigate('/login');
+
     } catch(err) {
       setError(err.message);
     } finally {
