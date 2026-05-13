@@ -6,11 +6,13 @@
 import styles from "./Login.module.css";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
 
   const { login } = useAuth();
+  const navigate = useNavigate(); 
 
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
@@ -43,7 +45,9 @@ if (!email.includes("@")) {
 
   try{
     login(email,password);
-    setSuccess("Logged in successfully!")
+    setSuccess("Logged in successfully!");
+    navigate('/events');
+
   }
   catch(err){
     setError(err.message);

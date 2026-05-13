@@ -1,6 +1,7 @@
 import styles from "./EventCard.module.css";
 
 const EventCard = ({event}) => {
+    
     return(
         <div className={styles.card}>
             <div className={styles.header}>

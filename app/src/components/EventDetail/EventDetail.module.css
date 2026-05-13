@@ -5,8 +5,18 @@
   padding: 20px;
 }
 
+.image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: block;
+}
+
 .title {
   margin-bottom: 16px;
+  margin-top: 0;
 }
 
 .info {
@@ -17,4 +27,69 @@
 .description {
   margin-top: 16px;
   line-height: 1.6;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem 1.5rem;
+  background: #293a7d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 124, 255, 0.4);
+  background: #293a7d;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.addedSuccess {
+  background: #5b7cff;
+}
+
+.viewCartBtn {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  color: #5b7cff;
+  border: 2px solid #5b7cff;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewCartBtn:hover {
+  background: #5b7cff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(91, 124, 255, 0.4);
+}
+
+.viewCartBtn:active {
+  transform: translateY(0);
 }

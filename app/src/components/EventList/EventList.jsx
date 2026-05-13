@@ -6,6 +6,7 @@ import Pagination from "../Pagination/Pagination.jsx"
 import styles from "./EventList.module.css";
 import { useState } from "react";
 import api from "../../api.js";
+import { Link } from "react-router-dom";
 
 // TODO: split each event below into its own EventCard component
 // TODO: add a "Buy ticket" button to each event card
@@ -39,7 +40,10 @@ if(error){
     
     <ul className={styles.list}>
       {events.map((event) => (
-          <EventCard key={event.id} event={event}/>
+        
+        <Link key={event.id} to={`/events/${event.id}`}>
+            <EventCard event={event}/>
+        </Link>
         ))}
     </ul>
 

@@ -6,3 +6,8 @@
   padding: 20px;
   list-style: none;
 }
+
+.list a {
+  text-decoration: none;
+  color: inherit;
+}
