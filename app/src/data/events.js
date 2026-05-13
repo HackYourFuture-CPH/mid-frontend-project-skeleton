@@ -14,6 +14,7 @@ const events = [
     ticketsAvailable: 0,
     totalTickets: 800,
     category: "Conference",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const events = [
     ticketsAvailable: 60,
     totalTickets: 150,
     category: "Hackathon",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop",
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ const events = [
     ticketsAvailable: 12,
     totalTickets: 30,
     category: "Workshop",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop",
   },
 ];
 
