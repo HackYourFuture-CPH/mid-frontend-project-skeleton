@@ -1,5 +1,21 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "sam@gmail.com",
+      "password": "$2a$10$QwXFuPPjbGaqC6g4UNUch.79UUCopb07lMYmoN55cKg.FDm.tIU/2",
+      "id": 1
+    },
+    {
+      "email": "test@gmail.com",
+      "password": "$2a$10$sqaiHlAXj1Cmo/kRLb1phOiJRT3o1FhIo8r9FIrCcK2krf1Le61Gu",
+      "id": 2
+    },
+    {
+      "email": "test1@gmail.com",
+      "password": "$2a$10$lZQUW4ZAVg5xWNWuOTRJqetMoRv2n.v3fK3IFVK2ilIpmlO8MpMYS",
+      "id": 3
+    }
+  ],
   "events": [
     {
       "id": 1,
